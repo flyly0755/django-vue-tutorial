@@ -42,6 +42,7 @@ STATICFILES_DIRS = [
 
 INSTALLED_APPS = [
     'simpleui',  # 一定要写在第一个
+    'mdeditor',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
