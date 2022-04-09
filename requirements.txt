@@ -12,3 +12,6 @@ pyparsing==2.4.7
 pytz==2020.4
 six==1.15.0
 sqlparse==0.4.1
+psycopg2==2.9.3
+django-environ==0.4.5
+simpleui==4.0.2

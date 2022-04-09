@@ -12,12 +12,14 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 import os
 from datetime import timedelta
+import environ  # 对应的是django-environ这个包
 
-
+env = environ.Env()
+ROOT_DIR = environ.Path(__file__) - 1
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
+env.read_env(str(ROOT_DIR.path('.env')))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
@@ -25,7 +27,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '-1(gw4h!_=o2@@-3-p9jj62y=9k#*^3(5*!i-$yhblsckxw!=1'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -39,6 +41,7 @@ STATICFILES_DIRS = [
 # Application definition
 
 INSTALLED_APPS = [
+    'simpleui',  # 一定要写在第一个
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -88,10 +91,20 @@ WSGI_APPLICATION = 'drf_vue_blog.wsgi.application'
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    # }
+'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': env('DJANGO_PGSQL_DATABASE'),
+            'USER': env('DJANGO_PGSQL_USER'),
+            'PASSWORD': env('DJANGO_PGSQL_PASSWORD'),
+            'HOST': env('DJANGO_PGSQL_HOST'),
+            'POSRT': int(env('DJANGO_PGSQL_PORT')),
+            # 'OPTIONS': {
+            #     'charset': 'utf8mb4'},
+        }
 }
 
 

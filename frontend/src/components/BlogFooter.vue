@@ -3,7 +3,7 @@
     <br>
     <br>
     <div id="footer">
-        <p>www.dusaiphoto.com</p>
+        <p>Develop by Colin</p>
     </div>
 </template>
 
