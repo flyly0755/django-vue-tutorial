@@ -1,7 +1,8 @@
 from django.contrib import admin
 from django import forms
-
+from django.db import models
 from django_admin_hstore_widget.forms import HStoreFormField
+from django_json_widget.widgets import JSONEditorWidget
 # Register your models here.
 
 
@@ -33,5 +34,8 @@ class MovieBaseInfoAdminForm(forms.ModelForm):
 @admin.register(MovieBaseInfo)
 class MovieBaseInfoAdmin(admin.ModelAdmin):
     list_display = ['id', 'moviename', 'xpname', 'director']
-    form = MovieBaseInfoAdminForm
-
+    form = MovieBaseInfoAdminForm  # key/value field
+    formfield_overrides = {   # json field
+        # fields.JSONField: {'widget': JSONEditorWidget}, # if django < 3.1
+        models.JSONField: {'widget': JSONEditorWidget},
+    }

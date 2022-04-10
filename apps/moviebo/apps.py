@@ -2,4 +2,4 @@ from django.apps import AppConfig
 
 
 class MovieboConfig(AppConfig):
-    name = 'moviebo'
+    name = '电影票房'
