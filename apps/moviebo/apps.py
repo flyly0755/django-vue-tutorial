@@ -2,4 +2,5 @@ from django.apps import AppConfig
 
 
 class MovieboConfig(AppConfig):
-    name = '电影票房'
+    name = 'moviebo'
+    verbose_name = '电影票房'
