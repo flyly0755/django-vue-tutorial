@@ -1,27 +1,19 @@
-from rest_framework.decorators import api_view
-from rest_framework.response import Response
-from article.models import Article
+from apps.article.models import Article
 # from article.serializers import ArticleListSerializer
-from rest_framework.views import APIView
-from django.http import Http404
 # from article.serializers import ArticleDetailSerializer
-from rest_framework import status
-from rest_framework import mixins
-from rest_framework import generics
 # from rest_framework.permissions import IsAdminUser
-from article.permissions import IsAdminUserOrReadOnly
+from apps.article.permissions import IsAdminUserOrReadOnly
 from rest_framework import viewsets
-from article.serializers import ArticleSerializer
-from django_filters.rest_framework import DjangoFilterBackend
+from apps.article.serializers import ArticleSerializer
 from rest_framework import filters
-from article.models import Category
-from article.serializers import CategorySerializer, CategoryDetailSerializer
-from article.models import Tag
-from article.serializers import TagSerializer
-from article.serializers import ArticleDetailSerializer
+from apps.article.models import Category
+from apps.article.serializers import CategorySerializer, CategoryDetailSerializer
+from apps.article.models import Tag
+from apps.article.serializers import TagSerializer
+from apps.article.serializers import ArticleDetailSerializer
 
-from article.models import Avatar
-from article.serializers import AvatarSerializer
+from apps.article.models import Avatar
+from apps.article.serializers import AvatarSerializer
 
 
 class AvatarViewSet(viewsets.ModelViewSet):

@@ -14,11 +14,12 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path, re_path, include
+from django.views.static import serve
 
 from rest_framework.routers import DefaultRouter
-from article import views
-from comment.views import CommentViewSet
+from apps.article import views
+from apps.comment.views import CommentViewSet
 
 from django.conf import settings
 from django.conf.urls.static import static
@@ -28,7 +29,8 @@ from rest_framework_simplejwt.views import (
     TokenRefreshView,
 )
 
-from user_info.views import UserViewSet
+from apps.user_info.views import UserViewSet
+from drf_vue_blog.settings import MEDIA_ROOT
 
 router = DefaultRouter()
 router.register(r'article', views.ArticleViewSet)
@@ -48,6 +50,8 @@ urlpatterns = [
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 
+    path(r'mdeditor/', include('mdeditor.urls')),   # admin 编辑文章粘入图片时候调用
+    re_path('media/(?P<path>.*)$', serve, {"document_root": MEDIA_ROOT}),  # 用户页面显示文章，文章中有图片时调用
     # article
     # path('api/article/', include('article.urls', namespace='article')),
 
@@ -55,3 +59,5 @@ urlpatterns = [
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+

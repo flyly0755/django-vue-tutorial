@@ -40,9 +40,10 @@ class Article(models.Model):
 ```python
 # article/views.py
 
-from article.serializers import ArticleDetailSerializer
+from apps.article import ArticleDetailSerializer
 
 ...
+
 
 # 新增 get_serializer_class() 方法
 class ArticleViewSet(viewsets.ModelViewSet):

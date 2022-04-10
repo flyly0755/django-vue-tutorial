@@ -1,13 +1,13 @@
 from rest_framework import serializers
-from article.models import Article
+from apps.article.models import Article
 
-from user_info.serializers import UserDescSerializer
+from apps.user_info.serializers import UserDescSerializer
 
-from article.models import Category
-from article.models import Tag
-from article.models import Avatar
+from apps.article.models import Category
+from apps.article.models import Tag
+from apps.article.models import Avatar
 
-from comment.serializers import CommentSerializer
+from apps.comment.serializers import CommentSerializer
 
 
 class TagSerializer(serializers.HyperlinkedModelSerializer):

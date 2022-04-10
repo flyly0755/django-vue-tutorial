@@ -53,7 +53,7 @@ INSTALLED_APPS = [
     ...
 
     'rest_framework',
-    'article',
+    'apps.article',
 ]
 ```
 
@@ -151,9 +151,10 @@ def a_list(request):
 # article/views.py
 
 from django.http import JsonResponse
-from article.models import Article
+from apps.article import Article
 # 这个 ArticleListSerializer 暂时还没有
-from article.serializers import ArticleListSerializer
+from apps.article import ArticleListSerializer
+
 
 def article_list(request):
     articles = Article.objects.all()
@@ -206,7 +207,7 @@ urlpatterns = [
 # article/urls.py
 
 from django.urls import path
-from article import views
+from apps.article import views
 
 app_name = 'article'
 

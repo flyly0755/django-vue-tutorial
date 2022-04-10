@@ -1,8 +1,8 @@
 from rest_framework import viewsets
 
-from comment.models import Comment
-from comment.serializers import CommentSerializer
-from comment.permissions import IsOwnerOrReadOnly
+from apps.comment.models import Comment
+from apps.comment.serializers import CommentSerializer
+from apps.comment.permissions import IsOwnerOrReadOnly
 
 
 class CommentViewSet(viewsets.ModelViewSet):

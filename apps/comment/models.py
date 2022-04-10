@@ -1,7 +1,7 @@
 from django.db import models
 from django.utils import timezone
 
-from article.models import Article
+from apps.article.models import Article
 from django.contrib.auth.models import User
 
 
