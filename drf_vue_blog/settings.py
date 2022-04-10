@@ -54,6 +54,10 @@ INSTALLED_APPS = [
     'apps.article',
     'apps.user_info',
     'apps.comment',
+    'apps.moviebo',
+    'django_admin_hstore_widget',
+    # 'django_json_widget',
+    'django.contrib.postgres',
 ]
 
 MIDDLEWARE = [
